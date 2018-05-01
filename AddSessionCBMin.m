@@ -28,7 +28,7 @@ cells = findallcells();
 
 %% Extract TTLs from neuralynx file
 % this example is specific to nlx
-events = getRawTTLs(fullfile(datapath,subject,session,'Events.nev'));
+% events = getRawTTLs(fullfile(datapath,subject,session,'Events.nev'));
 
 %there is no common convention for naming these files - we could think
 %about one
@@ -36,9 +36,11 @@ EventTTL=events(:,2)';
 EventTimestamps=events(:,1)';
 
 %saving optional
-save('EventTTL_task.mat','EventTTL');
-save('Events.mat','EventTimestamps');
+% save(fullfile(datapath,subject,session,'EventTTL_task.mat'),'EventTTL');
+% save(fullfile(datapath,subject,session,'EventTimestamps.mat'),'EventTimestamps');
 
+load(fullfile(datapath,subject,session,'EventTTL_task.mat'));
+load(fullfile(datapath,subject,session,'EventTimestamps.mat'));
 
 %% Load the behavioral file
 [~,BehaviorFilesFullPath] = getDir(fullfile(datapath,subject,session),'file','Dual2AFCv3');
