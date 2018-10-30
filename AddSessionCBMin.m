@@ -26,6 +26,9 @@ cells = findallcells();
 %extract subject and session name
 [subject, session] = cellid2tags(cells{1});
 
+%% Define EventsEpochs function
+[events,epochs] = defineEventsEpochs_example; %for demo, no need to call it extra in general
+
 %% Extract TTLs from neuralynx file
 % this example is specific to nlx
 % events = getRawTTLs(fullfile(datapath,subject,session,'Events.nev'));
@@ -64,10 +67,6 @@ end
 % with THE ADDITIONAL FIELD ***TRIALSTART*** cointaining the trial start
 % timestamps from the recording system for each trial
 MakeTrialEvents2_example(cells{1}, TE, EventTTL, EventTimestamps)
-
-
-%% Define EventsEpochs function
-[events,epochs] = defineEventsEpochs_example; %for demo, no need to call it extra in general
 
 %% Prealign the spikes
 prealignSpikes(cells,'FUNdefineEventsEpochs',@defineEventsEpochs_example,'filetype','event','events',[],'epochs',[],'writing_behavior','overwrite','ifsave',1);
