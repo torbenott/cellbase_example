@@ -124,7 +124,7 @@ TE2.TrialStart = son2;
 
 % Save synchronized 'TrialEvents' file
 if ~isempty(TE2.TrialStartTimeStamp)
-    save(fullfile(getpref('cellbase','datapath'),subject,session,getpref('cellbase','session_filename')),'-struct','TE2')
+    save(fullfile(getpref('cellbase','datapath'),subject,session,getcbpref('TrialEvents_fname')),'-struct','TE2')
 else
     error('MakeTrialEvents:noOutput','Synchronization process failed.');
 end
