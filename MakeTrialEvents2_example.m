@@ -138,7 +138,7 @@ function I = ismatch(ts,son2)
 
 % Check if the two time series match notwithstanding a constant drift
 clen = min(length(ts),length(son2));
-I = abs(max(diff(ts(1:clen)-son2(1:clen)))) < 3;  % the difference between the timestamps on 2 systems may have a constant drift, but it's derivative should still be ~0
+I = max(abs(diff(ts(1:clen)-son2(1:clen)))) < 3;  % the difference between the timestamps on 2 systems may have a constant drift, but it's derivative should still be ~0
 
 % note: abs o max is OK, the derivative is usually a small neg. number due
 % to drift of the timestamps; max o abs would require a higher tolerance

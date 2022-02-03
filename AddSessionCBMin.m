@@ -32,8 +32,8 @@ cells = findallcells();
 
 %there is no common convention for naming these files - we could think
 %about one
-EventTTL=events(:,2)';
-EventTimestamps=events(:,1)';
+% EventTTL=events(:,2)';
+% EventTimestamps=events(:,1)';
 
 %saving optional
 % save(fullfile(datapath,subject,session,'EventTTL_task.mat'),'EventTTL');
@@ -93,7 +93,6 @@ SE = loadcb(cellid,'EVENTSPIKES');
 
 %% plot/get psth functions
 % viewcell2b
-% apsth
 % ultimate_psth
 
 %viewcell2b logic
@@ -108,7 +107,7 @@ SE = loadcb(cellid,'EVENTSPIKES');
 %bug with legends in plot_timcourse.m
 %slow (because of inefficiently plotting rasters! (with uistack))
 tic
-viewcell2b(cellid,'TriggerName','StimulusOnset','SortEvent','StimulusOffset','eventtype','behav','ShowEvents',{{'StimulusOffset'}},'window',[-1,1],'Partitions','#CorrectChoice');
+viewcell2b(cellid,'TriggerName','StimulusOnset','SortEvent','StimulusOffset','eventtype','behav','ShowEvents',{{'StimulusOffset'}},'window',[-1,1],'Partitions','#CorrectChoice','stack_events_bottom',false,'FigureNum',5);
 toc
 
 % ultimate_psth logic
